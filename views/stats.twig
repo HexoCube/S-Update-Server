@@ -1,5 +1,5 @@
 {#
- # Copyright 2015 TheShark34
+ # Copyright 2015-2016 Adrien Navratil
  #
  # This file is part of S-Update-Server.
  #
@@ -20,7 +20,7 @@
 {#
  # Panel statistics page
  #
- # v3-(Panel-1.1.0-BETA)
+ # v3-(Panel-1.2.0-BETA)
  #}
 
 {% extends 'templates/base.twig' %}
@@ -29,28 +29,28 @@
 
 {% block head %}
     <!-- Index CSS -->
-    <link href="{{ resPath ~ "css/stats.css" }}" rel="stylesheet" />
+    <link href="{{ res("css/stats.css") }}" rel="stylesheet" />
 {% endblock %}
 
 {% block content %}
     <style>
         html, body {
-            background-image: url({{ resPath ~ "images/background.png" }});
+            background-image: url({{ res("images/background.png") }});
         }
     </style>
 
-    <div id="mainDiv">
-        <img src="{{ resPath ~ 'images/logo.png' }}" />
+    <div id="mainDiv" class="margin-top-50 center">
+        <img src="{{ res('images/logo.png') }}" />
         <br />
         <br />
-        <button style="width: 200px" onclick="window.location.href='{{ app.request.basepath }}';">Home</button>
+        <button style="width: 200px" onclick="window.location.href='..';">Home</button>
         <br />
         <br />
 
         <hr />
 
-        <div id="connections">
-            <p>{{ connections }}</p>
+        <div id="connections" class="size-20 margin-top-20 inline-block center">
+            <p class="size-35">{{ connections }}</p>
             <br />
 
             Connections
@@ -58,13 +58,13 @@
         <br />
         <br />
 
-        <div id="clear-buttons">
+        <div id="clear-buttons" class="padding-25">
             <button class="clear-button" onclick="clearConnections()">Clear connections</button>
             <button id="clear-button" onclick="clearIps()">Clear IPs</button>
         </div>
         <br />
 
-        <div id="ips">
+        <div id="ips" class="size-25">
             {% for ip in ips %}
                 {{ ip }}<br />
             {% endfor %}
@@ -75,6 +75,6 @@
 {% block scripts %}
 
     <!-- The Stats Page Script -->
-    <script src="{{ resPath ~ "js/stats.js" }}"></script>
+    <script src="{{ res("js/stats.js") }}"></script>
 
 {% endblock %}
